@@ -1,17 +1,12 @@
 import styles from './App.module.css';
 import { MoviesGrid } from './components/MoviesGrid';
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import { Navigate } from "react-router-dom";
 import { MovieDetails } from './pages/MoviesDetails';
 import { LandingPage } from './pages/LandingPage';
 
 export function App() {
 
-    const Private = ({Component}) => {
-        const auth = false; 
     
-        return auth ? <Component/> : <Navigate to="/" />
-    }
 
     return <Router>
         <header>
@@ -25,8 +20,12 @@ export function App() {
         <main>
             <div><MoviesGrid/></div>
             <Routes>
-                <Route exact path="/movies/:movieId" element={<Private Component={<MovieDetails/>}/>}/>
-                <Route path="/" element={<Private Component={<LandingPage/>}/>}/>
+            
+                <Route path="/" element={<LandingPage/>}>
+
+                    <Route exact path="/movies/:movieId" element={<MovieDetails/>}/>
+
+                </Route>
             </Routes>
         </main>
     </Router>;
