@@ -8,7 +8,7 @@ export function App() {
 
     
 
-    return <Router>
+    return <BrowserRouter>
         <header>
             <Link to="/">
                 {<h2 className={styles.title}>Movies</h2>}
@@ -28,5 +28,5 @@ export function App() {
                 </Route>
             </Routes>
         </main>
-    </Router>;
+    </BrowserRouter>;
 }
